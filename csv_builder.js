@@ -12,6 +12,9 @@ function ConvertToCSV(objArray) {
     var header_line = '';
 
     for (var i = 0; i< headers.length; i++){
+        if(headers[i] == 'object_id' | headers[i] == 'subject_id'){
+            continue
+        }
         if(header_line != '') header_line += ","
         header_line += headers[i]
     }
@@ -20,6 +23,9 @@ function ConvertToCSV(objArray) {
     for (var i = 0; i < array.length; i++) {
         var line = '';
         for (var index in array[i]) {
+            if(index == 'object_id' | index == 'subject_id'){
+                continue
+            }
             if (array[i][index] == '' && Object.keys(array[i]).indexOf(index) == 0) line += ','
             if (line != '' && line != ',') line += ','
 
